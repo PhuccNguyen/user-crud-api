@@ -21,6 +21,34 @@ export const CreateUser = async (req, res) => {
     }
 };
 
+//  export const createPost = async (req,res) => {\
+//     try {
+//           const { Name, Mobile , Email, Password }= req.bbody
+
+//           const newUser = new User({ Name, Mobile , Email, Password});
+//           await newUser.save();
+
+//           res.status(201).json(newUser);
+
+//     } catch (error) {
+//         res.status(500).json({ message: "Error creating", error });
+//     }
+//  };
+// export const CreateUser = async (req, res) => {
+//     try {
+//         const user = new User(req.body);
+//         await user.save();
+//         res.status(201).json(user); 
+//     } catch (error) {
+//         if (error.code === 11000) { 
+//             res.status(400).json({ message: "Email already exists" });
+//         } else {
+//             res.status(500).json({ message: "Internal Server Error", error });
+//         }
+//     }
+// };
+
+
 // Get user by ID
 export const Getuser = async (req, res) => {
     try {
@@ -48,7 +76,7 @@ export const Updateuser = async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(
             id,
             { email, username, birthday },
-            { new: true, runValidators: true } 
+            { new: true,}
         );
 
         if (!updatedUser) {
@@ -82,7 +110,7 @@ export const updateUsers = async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(
             id,
             updates,
-            { new: true, runValidators: true } 
+            { new: true,} 
         );
 
         if (!updatedUser) {
